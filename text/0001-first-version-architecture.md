@@ -18,7 +18,55 @@ seeking a great code quality application.
 
 # Detailed design
 
-Yet to be discussed
+## Functional Requirements
+
+### Signup a team
+A user must be able to signup his team by providing these informations
+* `email`
+* `university / institution`
+* `enactus team ID`
+* `name`
+
+### Invite team members
+After a team is successfully signed up, an e-mail must be sent to
+the team's email containing a link to invite members.
+
+On signup, each member must provide the following information
+
+* `email`
+* `password`
+* `name`
+* `documents` (`CPF` is required for certificates, `RG` is optional)
+
+The team leader must be able to invite more members.
+
+### Team leader
+The first signed up member is temporarily the team leader. After other members
+have signed, the current leader can choose another member to become the new leader
+
+### Register projects/teams
+The team leader must be able to create projects/teams. Each project/team must contain
+
+* `name`
+* `description`
+* `members`
+
+### Register activities
+A member must be able to register his activities. Each activity must have
+
+* `startedAt`
+* `finishedAt`
+* `name`
+* `description`
+* `members`
+* `project`/`team`
+
+A member can add other members to his activities, so that the activity hours
+are counted for them too.
+
+### Member monthly hours report
+A member can generate a report of the hours he worked during the desired month.
+
 
 # Drawbacks
 
@@ -34,4 +82,4 @@ yet to be discussed
 
 # Unresolved questions
 
-Yet to be discussed
+yet to be discussed 
