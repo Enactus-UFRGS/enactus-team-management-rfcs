@@ -5,44 +5,37 @@
 # Summary
 
 Here we will discuss the architecture for the first version of the Enactus Team Management System.
-This involves which features will be developed, which classes/models
-will be added and how they relate to each other.
+This involves which features will be developed and how they will be modeled and developed
 
 # Motivation
 
-We want the Enactus Team Management System to be open source and an opportunity of learning
+We want the Enactus Team Management System to be an open source solution for Enactus teams and an opportunity of learning
 to any Enactus developer. The first opportunity we see is to provide our first developers
 the chance to elaborate a good and well thought architecture for the first version of the software
 seeking a great code quality application.
+
+Thinking about the challenges of a Enactus Team we see that managing members, projects and activities is
+one of the hardest. Every team must collect the worked hours of its members and the project activities to
+provide those informations for their national Enactus organization so that the team is able to take part on
+the national championship and project notices.
+
+That's why the first set of features will be focused on enabling team members to register their activities
+in each project or team and providing usefull reports for the team leaders.
+
+Here's what we want without much detail:
+
+* A member must be able to register his activities including
+    * A description of the activity
+    * The duration of the activity
+    * For which project or team the activity has been done
+* A team/project leader must be able to see reports of
+    * A members activities
+    * A projects/teams activities
 
 
 # Detailed design
 
 ## Functional Requirements
-
-### Signup a team
-A user must be able to signup his team by providing these informations
-* `email`
-* `university / institution`
-* `enactus team ID`
-* `name`
-
-### Invite team members
-After a team is successfully signed up, an e-mail must be sent to
-the team's email containing a link to invite members.
-
-On signup, each member must provide the following information
-
-* `email`
-* `password`
-* `name`
-* `documents` (`CPF` is required for certificates, `RG` is optional)
-
-The team leader must be able to invite more members.
-
-### Team leader
-The first signed up member is temporarily the team leader. After other members
-have signed, the current leader can choose another member to become the new leader
 
 ### Register projects/teams
 The team leader must be able to create projects/teams. Each project/team must contain
