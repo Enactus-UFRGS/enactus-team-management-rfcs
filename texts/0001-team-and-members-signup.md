@@ -28,24 +28,36 @@ Here's what we want:
 
 # Detailed design
 
+
 For user registration and authentication we will use [Devise](https://github.com/plataformatec/devise)
 because it is easy and widely used, and it allows multiple model authentication, which might become
 handy once Enactus national organizations are added to the scope of the application.
 
 User registration and authentication will work as most web applications.
 
+![](https://drive.google.com/uc?id=1liI40EAh3DasfmtJYR_WdJdGiZeZtP9N)
+
 1. The user enters his e-mail and password (also name if registering)
 2. User clicks signin(signup) button
 3. User is (created and) authenticated into the application
 
 After an user is authenticated he is redirected to his team page.
+Each user belongs to only one team. Each team has one or more members (users).
+
+![](https://drive.google.com/uc?id=12t3xptUzsERrXJmcGcYXIg60t708nnFJ)
+
 If the users does not belong to a team yet he has to either select an existing team to enter
 or create his Enactus team.
 
+![](https://drive.google.com/uc?id=1lgNZTycusqWgTGQRxgOyjiAhzVt3JEyz)
 
 When an user creates a team we must validate that it is a real Enactus team. We can do that by
-verifying the Enactus Team ID with the National Enactus Organization. Here are the informations needed
-for creating an Enactus team
+verifying the Enactus Team ID with the National Enactus Organization. 
+
+![](https://drive.google.com/uc?id=1pRRO-b-7DsPw_A8bqls8-pngwonKyIYv)
+
+Here are the informations needed for creating an Enactus team
+
 
 * Team name
 * Enactus Team ID
