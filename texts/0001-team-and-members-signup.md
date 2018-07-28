@@ -5,60 +5,64 @@
 # Summary
 
 As our first RFC we will discuss how Enactus Teams and members should be able
-to signup to the Enactus Team Management System (ETMS)
+to signup and authenticate to the Enactus Team Management System (ETMS)
 
 # Motivation
 
 It is important that Enactus teams and members are able to signup to this software
 without too much bureaucracy.
 
-At the same time we must ensure that not-Enactus teams and users signup and use this software.
-At least not yet, since this software is being thought for Enactus teams only. 
-
-# Detailed design
+At the same time we must prevent not-Enactus teams and users from signing up and using this software.
 
 We want every Enactus team in the world to be able to signup and take advantage of the ETMS.
-At the same time, we don't want not-Enactus teams and users signin-up to avoid possible servers overloads
-and losing control over the application.
+At the same time, we don't want not-Enactus teams and users signing in/signing up to avoid possible
+servers overloads and losing control over the use of the application.
 
 Here's what we want:
 
 * A Enactus team must be able to signup
-* A signup Enactus team should be verified before using the application
+* After signed up, an Enactus team must be validated (it must exist and be allowed to use the software)
 * A Enactus team must be able to add/remove members
-* A Enactus team must be able to select a leader between its members
 * Members should be able to signup to a Enactus Team
-* Members should be able to signin to application and have access to their team information
+* Members should be able to signin to application
+
+# Detailed design
+
+For user registration and authentication we will use [Devise](https://github.com/plataformatec/devise)
+because it is easy and widely used, and it allows multiple model authentication, which might become
+handy once Enactus national organizations are added to the scope of the application.
+
+User registration and authentication will work as most web applications.
+
+1. The user enters his e-mail and password (also name if registering)
+2. User clicks signin(signup) button
+3. User is (created and) authenticated into the application
+
+After an user is authenticated he is redirected to his team page.
+If the users does not belong to a team yet he has to either select an existing team to enter
+or create his Enactus team.
+
+
+When an user creates a team we must validate that it is a real Enactus team. We can do that by
+verifying the Enactus Team ID with the National Enactus Organization. Here are the informations needed
+for creating an Enactus team
+
+* Team name
+* Enactus Team ID
 
 # Drawbacks
 
-Why should we *not* do this? Please consider:
+* The developers team are responsible for validating each created team with the National Enactus
+Organization. In Brazil, for example, it the team will have to send the team name and Enactus Team ID
+to Enactus Brazil for validation
+* Foreign teams are not allowed to signup yet because there is no information about the team's country
 
-- implementation cost, both in term of code size and complexity
-- whether the proposed feature can be implemented in user space
-- integration of this feature with other existing and planned features
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
 
 # Alternatives
 
-What other designs have been considered? What is the impact of not doing this?
+No alternatives have been thought
 
 # Adoption strategy
 
-If we implement this proposal, how will existing developers adopt it? Is
-this a breaking change? Can we write a codemod? Should we coordinate with
-other projects or libraries?
 
 # Unresolved questions
-
-* How will Enactus teams be verified?
-    * Every Enactus team has a Enactus Team ID registered to Enactus Worldwide. We could verify
-    that.
-* How will Enactus teams add members?
-    * It can be done via link sent to the Enactus Team e-mail
-* Who will be the first Enactus team leader?
-    * Maybe the first user who enters the team?
-    * Or maybe the user who signs the team up?
-* How will the process of changing team leader be done?
-    * The current leader `passes-the-flag` (selects) to the new leader?
