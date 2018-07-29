@@ -28,25 +28,22 @@ Here's what we want:
 
 # Detailed design
 
-
-For user registration and authentication we will use [Devise](https://github.com/plataformatec/devise)
-because it is easy and widely used, and it allows multiple model authentication, which might become
-handy once Enactus national organizations are added to the scope of the application.
-
 User registration and authentication will work as most web applications.
 
 ![](https://drive.google.com/uc?id=1liI40EAh3DasfmtJYR_WdJdGiZeZtP9N)
 
-1. The user enters his e-mail and password (also name if registering)
-2. User clicks signin(signup) button
-3. User is (created and) authenticated into the application
+1. The user enters his `e-mai` and `password`
+    1. also `name` if registering
+2. User clicks signin/signup button
+3. User is authenticated into the application
+    1. User must also be created if registering
 
 After an user is authenticated he is redirected to his team page.
 Each user belongs to only one team. Each team has one or more members (users).
 
 ![](https://drive.google.com/uc?id=12t3xptUzsERrXJmcGcYXIg60t708nnFJ)
 
-If the users does not belong to a team yet he has to either select an existing team to enter
+If the users does not belong to a team yet he must either enter an existing team 
 or create his Enactus team.
 
 ![](https://drive.google.com/uc?id=1lgNZTycusqWgTGQRxgOyjiAhzVt3JEyz)
@@ -56,11 +53,13 @@ verifying the Enactus Team ID with the National Enactus Organization.
 
 ![](https://drive.google.com/uc?id=1pRRO-b-7DsPw_A8bqls8-pngwonKyIYv)
 
-Here are the informations needed for creating an Enactus team
+To create an Enactus team the user must provide:
 
-
-* Team name
+* The Enactus Team name
+    * generally in format `Enactus {{university name}}`
 * Enactus Team ID
+    * an unique ID provided by the National Enactus Organization to every team. It will be used
+    to validate the team.
 
 # Drawbacks
 
@@ -72,9 +71,16 @@ to Enactus Brazil for validation
 
 # Alternatives
 
-No alternatives have been thought
+No alternatives have been thought yet.
 
 # Adoption strategy
 
+This is the very beginning of the ETMS application. These are the steps that we're going to take:
+1. Implement user signup and authentitcation (signin)
+    1. this will allow Enactus team members to signup and for the developers to collect some feedback
+2. Implement team creation and entering
+    1. we must deploy both features together to avoid Enactus teams being created multiple times
+3. Small improvements and fixes
+    1. after some feedback is collected we are going to tune our features to their best.
 
 # Unresolved questions
